@@ -23,7 +23,7 @@ public class Ball extends JComponent implements Runnable {
 	{
 		center = c;
 		// Random velocity
-		velocity = new Point(1, 1);
+		velocity = new Point((int)(Math.random()*20-10), (int)(Math.random()*20-10));
 		radius = 20;
 		//
 		repaint();
