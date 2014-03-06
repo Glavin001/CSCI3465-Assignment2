@@ -23,7 +23,7 @@ public class Ball extends JComponent implements Runnable {
 	{
 		center = c;
 		// Random velocity
-		velocity = new Point(1, 10);
+		velocity = new Point(1, 1);
 		radius = 20;
 		//
 		repaint();
@@ -62,17 +62,32 @@ public class Ball extends JComponent implements Runnable {
 		// Check top
 		if (0 > (center.getY() + 0*radius))
 		{
-			velocity.y = Math.abs(velocity.y); // Velocity DOWN
+			velocity.y = Math.abs(velocity.y); // Velocity to DOWN
+			// Fix position
+			center.y = (int) (0+0*radius);
 		}
 		// Check bottom
 		else if (d.getHeight() < (center.getY() + 2*radius) ) 
 		{
-			velocity.y = -1 * Math.abs(velocity.y); // Velocity UP
+			velocity.y = -1 * Math.abs(velocity.y); // Velocity to UP
+			// Fix position
+			center.y = (int) (d.getHeight() - 2*radius);
 		}
 		
 		// Check left
-		
+		if (0 > (center.getX() + 0*radius))
+		{
+			velocity.x = Math.abs(velocity.x); // Velocity to RIGHT
+			// Fix position
+			center.x = (int) (0+0*radius);
+		}
 		// Check right
+		else if (d.getWidth() < (center.getX() + 2*radius) ) 
+		{
+			velocity.x = -1 * Math.abs(velocity.x); // Velocity to LEFT
+			// Fix position
+			center.x = (int) (d.getWidth() - 2*radius);
+		}
 		
 	}
 	
